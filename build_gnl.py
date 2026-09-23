@@ -187,7 +187,7 @@ def pboc_year_pages():
     """{annee: url de la page 'Money and Banking Statistics' (货币统计概览)}."""
     idx = get(f"{PBOC}/diaochatongjisi/116219/116319/index.html").decode("utf-8", "ignore")
     years = {}
-    for href, y in re.findall(r'href="([^"]+)"[^>]*>\s*(20\d\d)年统计数据', idx):
+    for href, y in re.findall(r'href=[\'"]([^\'"]+)[\'"][^>]*>\s*(20\d\d)年统计数据', idx):
         years.setdefault(int(y), urllib.parse.urljoin(PBOC + "/diaochatongjisi/116219/116319/index.html", href))
     pages = {}
     for y, url in sorted(years.items()):
@@ -195,7 +195,7 @@ def pboc_year_pages():
             continue
         try:
             yp = get(url, tries=2).decode("utf-8", "ignore")
-            m = re.search(r'href="([^"]+)"[^>]*>\s*(?:<[^>]+>\s*)*货币统计概览', yp)
+            m = re.search(r'href=[\'"]([^\'"]+)[\'"][^>]*>\s*(?:<[^>]+>\s*)*货币统计概览', yp)
             if m:
                 pages[y] = urllib.parse.urljoin(url, m.group(1))
         except Exception as e:  # noqa: BLE001
@@ -214,8 +214,8 @@ def pboc_series(section, label_regex, years=None):
         try:
             page = get(url, tries=2).decode("utf-8", "ignore")
             pos = page.find(section)
-            after = re.findall(r'href="([^"]+\.htm)"', page[pos:] if pos >= 0 else page)[:6]
-            others = [h for h in re.findall(r'href="([^"]+\.htm)"', page) if h not in after]
+            after = re.findall(r'href=[\'"]([^\'"]+\.htm)[\'"]', page[pos:] if pos >= 0 else page)[:6]
+            others = [h for h in re.findall(r'href=[\'"]([^\'"]+\.htm)[\'"]', page) if h not in after]
             found = False
             for href in after + others[:30]:
                 u = urllib.parse.urljoin(url, href).replace("http://", "https://")
@@ -246,7 +246,7 @@ def pboc_recent():
             if pos < 0:
                 log(f"  PBoC {year}: tableau introuvable")
                 continue
-            m = re.search(r'href="([^"]+\.htm)"', idx[pos:pos + 3000])
+            m = re.search(r'href=[\'"]([^\'"]+\.htm)[\'"]', idx[pos:pos + 3000])
             if not m:
                 continue
             out.update(pboc_row(html_rows(get(base + m.group(1), tries=2)), r"总资产"))
