@@ -1,0 +1,21 @@
+{
+  "generated_utc": "2026-09-23T17:25:25+00:00",
+  "rows": 4649,
+  "unit": "milliards USD",
+  "derniere_observation": {
+    "fed_total_assets": "2026-09-16",
+    "fed_rrp": "2026-09-22",
+    "fed_tga": "2026-09-21",
+    "ecb": "2026-09-18",
+    "boj": "2026-08-31",
+    "pboc": "2026-08-31",
+    "boe": "2026-07-31",
+    "snb": "2026-07-31",
+    "boc": "2026-09-16",
+    "fx_ecb": "2026-09-23"
+  },
+  "sources": {
+    "tga": "Treasury DTS (quotidien)",
+    "pboc": "PBoC (annee en cours) + BIS (historique)"
+  }
+}
