@@ -1,0 +1,41 @@
+name: Mise a jour GNL
+
+on:
+  schedule:
+    # tous les jours a 06:17 et 18:17 UTC (apres les publications BCE / Fed / Tresor US)
+    - cron: "17 6,18 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gnl-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Construire gnl.csv
+        run: python build_gnl.py gnl.new.csv status.json
+
+      - name: Publier si les donnees ont change
+        run: |
+          mv gnl.new.csv gnl.csv
+          git config user.name "gnl-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add gnl.csv status.json
+          if git diff --cached --quiet -- gnl.csv; then
+            echo "Aucune nouvelle donnee."
+          else
+            git commit -m "Donnees GNL $(date -u +%Y-%m-%d)"
+            git push
+          fi
