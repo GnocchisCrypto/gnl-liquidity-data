@@ -220,8 +220,8 @@ def pboc_series(section, label_regex, years=None):
             for href in after + others[:30]:
                 u = urllib.parse.urljoin(url, href).replace("http://", "https://")
                 try:
-                    vals = pboc_row(html_rows(get(u, tries=2)), label_regex)
-                except StopIteration:
+                    vals = pboc_row(html_rows(get(u, tries=1)), label_regex)
+                except Exception:  # noqa: BLE001  (lien mort ou autre tableau)
                     continue
                 if vals:
                     out.update(vals)
