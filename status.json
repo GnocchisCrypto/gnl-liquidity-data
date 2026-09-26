@@ -1,11 +1,11 @@
 {
-  "generated_utc": "2026-09-25T18:31:15+00:00",
-  "rows": 4651,
+  "generated_utc": "2026-09-26T06:35:21+00:00",
+  "rows": 4652,
   "unit": "milliards USD",
   "derniere_observation": {
     "fed_total_assets": "2026-09-23",
     "fed_rrp": "2026-09-25",
-    "fed_tga": "2026-09-23",
+    "fed_tga": "2026-09-24",
     "ecb": "2026-09-18",
     "boj": "2026-08-31",
     "pboc": "2026-08-31",
@@ -23,7 +23,7 @@
     "m2_ch": "2026-08-31",
     "m2_tw": "2026-07-15",
     "m2_br": "2026-07-31",
-    "us_debt": "2026-09-23"
+    "us_debt": "2026-09-24"
   },
   "sources": {
     "tga": "Treasury DTS (quotidien)",
