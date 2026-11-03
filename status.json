@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-11-03T01:00:48+00:00",
+  "generated_utc": "2026-11-03T14:21:35+00:00",
   "rows": 4690,
   "unit": "milliards USD",
   "derniere_observation": {
@@ -23,7 +23,7 @@
     "m2_ch": "2026-09-30",
     "m2_tw": "2026-09-15",
     "m2_br": "2026-09-30",
-    "us_debt": "2026-10-29"
+    "us_debt": "2026-10-30"
   },
   "sources": {
     "tga": "Treasury DTS (quotidien)",
