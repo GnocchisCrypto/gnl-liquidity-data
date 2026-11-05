@@ -1,13 +1,13 @@
 {
-  "generated_utc": "2026-11-04T23:42:39+00:00",
-  "rows": 4691,
+  "generated_utc": "2026-11-05T14:44:20+00:00",
+  "rows": 4692,
   "unit": "milliards USD",
   "derniere_observation": {
     "fed_total_assets": "2026-10-28",
     "fed_rrp": "2026-11-04",
     "fed_tga": "2026-11-03",
     "ecb": "2026-10-30",
-    "boj": "2026-09-30",
+    "boj": "2026-10-31",
     "pboc": "2026-09-30",
     "boe": "2026-07-31",
     "snb": "2026-09-30",
